@@ -1,10 +1,13 @@
 name: Re-run PR workflows
 description: Re-run GitHub workflows for incoming pull requests
 inputs:
-  milliseconds: # change this
+  github-token:
+    description: The GitHub token used to authenticate against the GitHub APIs
+    default: ${{ github.token }}
+    required: false
+  workflow:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: The name of the workflow that should be re-run
 runs:
   using: node12
   main: dist/index.js

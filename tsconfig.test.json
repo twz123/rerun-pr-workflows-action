@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.common.json",
+  "compilerOptions": {
+    "outDir": "./target/js"
+  },
+  "include": ["jest.config.ts", "__tests__/**/*.ts", "__mocks__/**/*.ts"],
+  "references": [{"path": "src"}]
+}

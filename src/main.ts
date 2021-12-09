@@ -1,23 +1,33 @@
-import * as core from '@actions/core'
-import {wait} from './wait'
+import * as core from '@actions/core';
+import * as github from '@actions/github';
+import {Action} from './action';
+import {ActionsReporter} from './reporter';
 
-async function run(): Promise<void> {
-  try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`)
+process.on('unhandledRejection', handleError);
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
-  } catch (error) {
-    if (error instanceof Error) {
-      core.setFailed(error.message)
-    } else {
-      throw error
-    }
-  }
+function handleError(err: unknown): void {
+  console.error(err); // eslint-disable-line no-console
+  core.setFailed(err instanceof Error ? err.message : String(err));
 }
 
-run()
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function getActionParams() {
+  return {
+    githubToken: core.getInput('github-token', {required: true}),
+    workflow: core.getInput('workflow', {required: true}),
+  };
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function getActionContext() {
+  const params = getActionParams();
+  return {
+    eventName: github.context.eventName,
+    payload: github.context.payload,
+    client: github.getOctokit(params.githubToken),
+    workflowName: params.workflow,
+    reporter: new ActionsReporter(),
+  };
+}
+
+Action.run(getActionContext()).catch(handleError);

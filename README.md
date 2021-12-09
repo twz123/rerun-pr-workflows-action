@@ -48,21 +48,9 @@ Install the dependencies
 $ npm install
 ```
 
-Build the typescript and package it for distribution
+Build the typescript, package it for distribution, lint, run tests ... all in
+one go
 
 ```sh
-$ npm run build && npm run package
-```
-
-Run the tests :heavy_check_mark:
-
-```sh
-$ npm test
-
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
-
-...
+$ npm run all
 ```

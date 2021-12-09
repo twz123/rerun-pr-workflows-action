@@ -1,0 +1,21 @@
+name: Re-run workflows for incoming PRs
+
+on:
+  push:
+    branches:
+    - '**'
+
+jobs:
+  trigger_ci:
+    name: Trigger CI
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Trigger CI
+      uses: ./
+      with:
+        workflow: CI

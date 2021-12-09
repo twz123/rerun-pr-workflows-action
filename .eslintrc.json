@@ -1,18 +1,14 @@
 {
-  "plugins": ["jest", "@typescript-eslint"],
+  "root": true,
+  "plugins": ["@typescript-eslint"],
   "extends": ["plugin:github/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 9,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": ["./src/tsconfig.json", "./tsconfig.test.json"]
   },
   "rules": {
-    "i18n-text/no-en": "off",
-    "eslint-comments/no-use": "off",
-    "import/no-namespace": "off",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
       {"accessibility": "no-public"}
@@ -39,6 +35,10 @@
     "@typescript-eslint/no-non-null-assertion": "warn",
     "@typescript-eslint/no-unnecessary-qualifier": "error",
     "@typescript-eslint/no-unnecessary-type-assertion": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {"varsIgnorePattern": "^_", "argsIgnorePattern": "^_"}
+    ],
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/no-var-requires": "error",
     "@typescript-eslint/prefer-for-of": "warn",
@@ -49,13 +49,41 @@
     "@typescript-eslint/require-array-sort-compare": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
     "semi": "off",
-    "@typescript-eslint/semi": ["error", "never"],
+    "@typescript-eslint/semi": ["error", "always"],
     "@typescript-eslint/type-annotation-spacing": "error",
-    "@typescript-eslint/unbound-method": "error"
+    "@typescript-eslint/unbound-method": "error",
+    "eslint-comments/no-use": "off",
+    "github/no-then": "off",
+    "i18n-text/no-en": "off",
+    "import/no-namespace": "off",
+    "no-unused-vars": "off" // in favor of @typescript-eslint/no-unused-vars
   },
   "env": {
     "node": true,
-    "es6": true,
-    "jest/globals": true
-  }
+    "es6": true
+  },
+
+  "overrides": [
+    {
+      "files": ["__tests__/**/*.ts", "jest.config.ts"],
+      "plugins": ["jest"],
+      "rules": {
+        "filenames/match-regex": 0
+      },
+      "env": {
+        "jest/globals": true
+      }
+    },
+    {
+      "files": ["__mocks__/**/*.ts"],
+      "plugins": ["jest"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "import/no-commonjs": "off"
+      },
+      "env": {
+        "jest/globals": true
+      }
+    }
+  ]
 }
