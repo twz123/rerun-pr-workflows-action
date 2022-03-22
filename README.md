@@ -40,7 +40,7 @@ that might be good enough for some folks. Some edge cases are:
 ## Code in Main
 
 First, you'll need to have a reasonably modern version of `node` handy. The CI
-builds use Node 12, currently.
+builds use Node 16, currently.
 
 Install the dependencies
 
