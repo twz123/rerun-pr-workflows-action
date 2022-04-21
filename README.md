@@ -27,7 +27,7 @@ that might be good enough for some folks. Some edge cases are:
   window is quite small, say, under a minute, but if the triggering GitHub
   action fails or gets stuck in the execution queue, this can go unnoticed for
   quite a while.
-- Stale pull requests:
+- Stale pull requests:  
   GitHub's docs [mention][gh-docs-rerun] that a GitHub workflow run can only be
   re-run up to 30 days after the triggering event event has occurred. So
   whenever a pull request isn't touched for longer than that period, the re-run
