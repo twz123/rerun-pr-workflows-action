@@ -20,7 +20,7 @@ which bad pull requests can slip through. If that's not acceptable, please
 consider a more elaborate approach than this one. This is a proof-of-concept
 that might be good enough for some folks. Some edge cases are:
 
-- Pull requests get merged in quick succession:
+- Pull requests get merged in quick succession:  
   Pull requests that were passing all of their status checks before the update
   of the target branch will remain in a mergeable state until the GitHub Action
   for the target branch triggered their respective builds. Usually, this time
