@@ -37,6 +37,59 @@ that might be good enough for some folks. Some edge cases are:
 [action-event-pr]: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#pull_request
 [gh-docs-rerun]: https://docs.github.com/en/actions/managing-workflow-runs/re-running-workflows-and-jobs#re-running-all-the-jobs-in-a-workflow
 
+## Usage
+
+In order to use this action, you'll need to add a new workflow file to be
+triggered when branches are updated. You'll also need the name of the workflow
+your project uses for running tests on pull requests.
+
+E.g.:
+
+The workflow to trigger re-running PR workflows:
+```yml
+# .github/re-run-pr-workflows.yml
+name: Re-run workflows for incoming PRs
+
+on:
+  push:
+    branches:
+    - '**'
+
+jobs:
+  trigger_ci:
+    name: Trigger PR tests run
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Trigger PR tests run
+      uses: twz123/rerun-pr-workflows-action@v0.2
+      with:
+        workflow: Run PR Tests
+```
+
+Where `Run PR Tests` is the name set within the file that runs the PR tests. E.g.:
+
+```yaml
+# .github/run-pr-tests.yml
+name: Run PR Tests
+
+on:
+  pull_request:
+    branches: [ main, staging ]
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Testing steps go here.
+      # ...
+```
+
 ## Code in Main
 
 First, you'll need to have a reasonably modern version of `node` handy. The CI
