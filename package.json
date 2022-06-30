@@ -26,7 +26,7 @@
   "dependencies": {
     "@actions/core": "^1",
     "@actions/github": "^5",
-    "@octokit/webhooks-types": "^5"
+    "@octokit/webhooks-types": "^6"
   },
   "devDependencies": {
     "@types/node": "^18",
