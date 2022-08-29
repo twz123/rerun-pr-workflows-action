@@ -34,7 +34,7 @@
     "@vercel/ncc": "~0.34",
     "eslint": "^8",
     "eslint-plugin-github": "^4",
-    "eslint-plugin-jest": "^26",
+    "eslint-plugin-jest": "^27",
     "jest": "^27",
     "jest-mock-random": "^1.1.1",
     "js-yaml": "^4",
