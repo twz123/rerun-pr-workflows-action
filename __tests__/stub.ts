@@ -1,4 +1,4 @@
-import {Mock} from 'jest-mock';
+import {FunctionLike, Mock} from 'jest-mock';
 import {jest} from '@jest/globals';
 
 /**
@@ -24,10 +24,9 @@ export function stub<T>(partial: Stub<T>): T {
 }
 
 /** Stubs a function using Jest. */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function stubFn<T extends (...args: any) => any>(
-  implementation?: ((...args: Parameters<T>) => ReturnType<T>) | undefined,
-): Mock<ReturnType<T>, Parameters<T>> & T {
-  const fn = jest.fn<ReturnType<T>, Parameters<T>>(implementation);
-  return fn as Mock<ReturnType<T>, Parameters<T>> & T;
+export function stubFn<T extends FunctionLike>(
+  implementation?: T | undefined,
+): Mock<T> & T {
+  const fn = jest.fn<T>(implementation);
+  return fn as Mock<T> & T;
 }
