@@ -395,7 +395,7 @@ type ListWorkflowRunsForRepo =
 type ListWorkflowRunsResponse =
   RestEndpointMethodTypes['actions']['listWorkflowRunsForRepo']['response'];
 
-type Context = Parameters<typeof Action['run']>[0];
+type Context = Parameters<(typeof Action)['run']>[0];
 
 class RecordingReporter implements Reporter {
   events: (
