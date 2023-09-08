@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: Trigger PR tests run
-      uses: twz123/rerun-pr-workflows-action@v0.2
+      uses: twz123/rerun-pr-workflows-action@v0.3
       with:
         workflow: Run PR Tests
 ```
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # Testing steps go here.
       # ...
