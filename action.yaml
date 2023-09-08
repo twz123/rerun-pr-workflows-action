@@ -9,5 +9,5 @@ inputs:
     required: true
     description: The name of the workflow that should be re-run
 runs:
-  using: node16
+  using: node20
   main: dist/index.js
