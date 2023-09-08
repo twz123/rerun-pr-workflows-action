@@ -4,7 +4,7 @@
   "extends": ["plugin:github/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 9,
+    "ecmaVersion": 2023,
     "sourceType": "module",
     "project": ["./src/tsconfig.json", "./tsconfig.test.json"]
   },
@@ -65,7 +65,7 @@
   },
   "env": {
     "node": true,
-    "es6": true
+    "es2022": true
   },
 
   "overrides": [

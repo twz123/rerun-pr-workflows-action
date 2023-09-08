@@ -93,7 +93,7 @@ jobs:
 ## Code in Main
 
 First, you'll need to have a reasonably modern version of `node` handy. The CI
-builds use Node 16, currently.
+builds use Node 20, currently.
 
 Install the dependencies
 

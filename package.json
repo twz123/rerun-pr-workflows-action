@@ -29,7 +29,8 @@
     "@octokit/webhooks-types": "^7"
   },
   "devDependencies": {
-    "@types/node": "^16",
+    "@tsconfig/node20": "^20",
+    "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "@vercel/ncc": "~0.38",

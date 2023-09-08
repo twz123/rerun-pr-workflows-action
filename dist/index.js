@@ -9466,6 +9466,8 @@ exports.Action = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const types_1 = __nccwpck_require__(4334);
 class Action {
+    client;
+    reporter;
     constructor(client, reporter) {
         this.client = client;
         this.reporter = reporter;
@@ -9715,9 +9717,7 @@ exports.ActionsReporter = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 /** Logs progress to the GitHub Actions console. */
 class ActionsReporter {
-    constructor() {
-        this.interactions = false;
-    }
+    interactions = false;
     pullRequestIgnored(pullRequest) {
         this.interactions = true;
         core.info(`Skipped PR #${pullRequest.number} in ${pullRequest.mergeable} state.`);
@@ -9749,6 +9749,8 @@ exports.ActionsReporter = ActionsReporter;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Problem = void 0;
 class Problem extends Error {
+    cause;
+    opts;
     constructor(message, opts) {
         super(message);
         this.opts = Object.assign({}, opts || {});
