@@ -37,6 +37,7 @@
     "eslint": "^8",
     "eslint-plugin-github": "^4",
     "eslint-plugin-jest": "^27",
+    "eslint-plugin-prettier": "^4",
     "jest": "^29",
     "jest-mock-random": "^1.1.1",
     "js-yaml": "^4",
