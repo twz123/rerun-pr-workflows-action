@@ -113,8 +113,8 @@ test('retries if mergeable state is unknown', async () => {
         mergeable === true
           ? 'MERGEABLE'
           : mergeable === false
-          ? 'UNKNOWN'
-          : '-/-',
+            ? 'UNKNOWN'
+            : '-/-',
       headRef: {name: `branch${number}`},
       repository: {owner: {login: 'foo'}, name: 'bar'},
     });
