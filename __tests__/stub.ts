@@ -14,8 +14,8 @@ type Stub<T> = {
   [P in keyof T]?: T[P] extends (infer U)[]
     ? Stub<U>[]
     : T[P] extends object | undefined
-    ? Stub<T[P]>
-    : T[P];
+      ? Stub<T[P]>
+      : T[P];
 };
 
 /** Constructs instances of `T` where not all things have to be present. */
